@@ -25,3 +25,12 @@ process.stdin
 .on('data', roundRobinBalanceLine(children))
 .on('close', closeChildren(children))
 .on('error', logAndExit)
+
+const killChildren = () => {
+  children.forEach(child => child.kill())
+  // Exit the process itself as we overrided the default SIGINT behavior
+  process.exit(0)
+}
+
+process.on('exit', killChildren)
+process.on('SIGINT', killChildren)
