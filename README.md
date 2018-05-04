@@ -24,7 +24,8 @@
 
 ## Install
 ```sh
-# Make the executable accessible within your project npm scripts or at ./node_modules/.bin/load-balance-lines
+# Make the executable accessible within your project npm scripts as load-balance-lines
+# or, out of npm scripts, as ./node_modules/.bin/load-balance-lines
 npm i load-balance-lines
 # or globally
 npm i -g load-balance-lines
@@ -32,7 +33,7 @@ npm i -g load-balance-lines
 
 ## Basic use
 
-Take a huge pile of data with atomic data elements separated by a newline break, typically [NDJSON](http://ndjson.org).
+Take a huge pile of data with atomic data elements separated by newline breaks, typically [NDJSON](http://ndjson.org).
 
 ```sh
 # Make sure your executable is... executable
