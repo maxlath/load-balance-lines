@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+const split = require('split')
+
+process.stdin
+.pipe(split())
+.on('data', line => {
+  if (line[0] !== '{') return
+  const { num } = JSON.parse(line)
+  const result = { pid: process.pid, double: num * 2}
+  console.log(JSON.stringify(result))
+})

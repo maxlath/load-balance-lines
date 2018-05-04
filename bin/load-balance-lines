@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+const { spawn } = require('child_process')
+const split = require('split')
+const { LBL_PROCESSES } = process.env
+const processes = parseInt(LBL_PROCESSES) || require('os').cpus().length
+const { log, logAndExit, closeChildren, exitOnChildExit } = require('../lib/helpers')
+const roundRobinBalanceLine = require('../lib/round_robin_balance_line')
+
+const [ command, ...args ] = process.argv.slice(2)
+
+const children = []
+
+log('parallel processes', processes)
+
+for (let i = 0 ; i < processes ; i++) {
+  const child = spawn(command, args, {
+    stdio: [ 'pipe', 'inherit', 'inherit' ]
+  })
+  children.push(child)
+  child.on('exit', exitOnChildExit)
+}
+
+process.stdin
+.pipe(split())
+.on('data', roundRobinBalanceLine(children))
+.on('close', closeChildren(children))
+.on('error', logAndExit)

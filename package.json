@@ -1,0 +1,47 @@
+{
+  "name": "load-balance-lines",
+  "version": "1.0.0",
+  "description": "Parallelize newline delimited data processing by load balancing lines between multiple processes",
+  "main": "bin/load-balance-lines",
+  "scripts": {
+    "test": "mocha",
+    "lint": "standard",
+    "prepublish": "npm run lint && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxlath/load-balance-lines"
+  },
+  "keywords": [
+    "load-balancing",
+    "multi-process",
+    "ndjson",
+    "cli"
+  ],
+  "author": {
+    "name": "Maxime Lathuilière",
+    "email": "k@maxlath.eu",
+    "url": "https://maxlath.eu"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 6.4"
+  },
+  "devDependencies": {
+    "mocha": "^5.1.1",
+    "should": "^13.2.1",
+    "standard": "^11.0.1"
+  },
+  "standard": {
+    "ignore": [
+      "dist"
+    ],
+    "globals": [
+      "it",
+      "describe"
+    ]
+  },
+  "dependencies": {
+    "split": "^1.0.1"
+  }
+}
