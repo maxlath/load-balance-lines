@@ -1,7 +1,7 @@
 <div align="center">
   <h1>load-balance-lines</h1>
 
-  Parallelize newline delimited data processing by load balancing lines between multiple processes
+  Parallelize newline-delimited data processing by load balancing lines between multiple processes
 
   ![htop](https://github.com/maxlath/load-balance-lines/raw/master/assets/htop.png)
 </div>
