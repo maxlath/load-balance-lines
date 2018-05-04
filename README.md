@@ -2,6 +2,22 @@
 
 Parallelize newline delimited data processing by load balancing lines between multiple processes
 
+## Summary
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Install](#install)
+- [Basic use](#basic-use)
+- [Simple demo](#simple-demo)
+- [Real case demo](#real-case-demo)
+- [Options](#options)
+  - [Number of processes](#number-of-processes)
+  - [Silent](#silent)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Install
 ```sh
 # Make the executable accessible within your project npm scripts or at ./node_modules/.bin/load-balance-lines
@@ -24,6 +40,9 @@ or without the cat command, using [`<`](http://www.tldp.org/LDP/abs/html/io-redi
 ```sh
 load-balance-lines /path/to/my/executable some args for the executable < data.ndjson
 ```
+
+## Simple demo
+see [test](https://github.com/maxlath/load-balance-lines/blob/master/test/load_balance_lines.js)
 
 ## Real case demo
 
