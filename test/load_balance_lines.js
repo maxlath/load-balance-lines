@@ -1,8 +1,11 @@
 require('should')
 const { exec } = require('child_process')
-const coreCount = require('os').cpus().length
+const { expectedLinesCount, expectedOperation, expectedPidsCount } = require('./utils/utils')
 
 const command = `export LBL_SILENT=true; ./bin/load-balance-lines ./test/assets/double_nums < ./test/assets/nums.ndjson`
+
+const largeInputCommand = command.replace('nums.ndjson', 'many_nums.ndjson')
+const maxBuffer = 50 * 1024 * 1024
 
 describe('load-balance-lines', () => {
   it('should handle all the lines', done => {
@@ -49,8 +52,7 @@ describe('load-balance-lines', () => {
 
   it('should work with large amount of data', function (done) {
     this.timeout(30000)
-    const cmd = command.replace('nums.ndjson', 'many_nums.ndjson')
-    exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
+    exec(largeInputCommand, { maxBuffer }, (err, stdout, stderr) => {
       if (err) return done(err)
       if (stderr) return done(stderr)
       expectedLinesCount(stdout, 1000000)
@@ -60,26 +62,3 @@ describe('load-balance-lines', () => {
     })
   })
 })
-
-const expectedLinesCount = (stdout, expected) => {
-  getOutputLines(stdout).length.should.equal(expected)
-}
-
-const expectedOperation = (stdout, expectedTotal) => {
-  const total = getOutputLines(stdout).reduce((total, entry) => {
-    total += JSON.parse(entry).double
-    return total
-  }, 0)
-  total.should.equal(expectedTotal)
-}
-
-const expectedPidsCount = stdout => {
-  const pids = getOutputLines(stdout).reduce((pids, entry) => {
-    const { pid } = JSON.parse(entry)
-    pids[pid] = true
-    return pids
-  }, {})
-  Object.keys(pids).length.should.equal(coreCount)
-}
-
-const getOutputLines = stdout => stdout.trim().split('\n')
