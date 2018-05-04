@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Parallelize newline delimited data processing by load balancing lines between multiple processes",
   "main": "bin/load-balance-lines",
+  "bin": {
+    "load-balance-lines": "./bin/load-balance-lines"
+  },
   "scripts": {
     "test": "mocha",
     "lint": "standard",
