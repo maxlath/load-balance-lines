@@ -1,6 +1,6 @@
 {
   "name": "load-balance-lines",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Parallelize newline-delimited data processing by load balancing lines between multiple processes",
   "main": "bin/load-balance-lines",
   "bin": {
