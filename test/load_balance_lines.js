@@ -2,7 +2,7 @@ require('should')
 const { exec } = require('child_process')
 const { expectedLinesCount, expectedOperation, expectedPidsCount } = require('./utils/utils')
 
-const command = `export LBL_SILENT=true; ./bin/load-balance-lines ./test/assets/double_nums < ./test/assets/nums.ndjson`
+const command = `./bin/load-balance-lines ./test/assets/double_nums < ./test/assets/nums.ndjson`
 
 const largeInputCommand = command.replace('nums.ndjson', 'many_nums.ndjson')
 const maxBuffer = 50 * 1024 * 1024

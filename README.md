@@ -74,8 +74,8 @@ By default, there will be as many processes as CPU cores, but it can be modified
 export LBL_PROCESSES=4 ; cat data.ndjson | load-balance-lines ./my/script
 ```
 
-### Silent
-By default, the load balancer logs some basic informations, those can be silenced to let the stdout free for the sub-processes
+### Verbose
+By default, the load balancer is silent to let stdout free for sub-processes outputs, but you can get some basic informations by setting `LBL_VERBOSE`
 ```sh
-export LBL_SILENT=true ; cat data.ndjson | load-balance-lines ./my/script
+export LBL_VERBOSE=true ; cat data.ndjson | load-balance-lines ./my/script
 ```
