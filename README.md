@@ -79,3 +79,6 @@ By default, the load balancer is silent to let stdout free for sub-processes out
 ```sh
 export LBL_VERBOSE=true ; cat data.ndjson | load-balance-lines ./my/script
 ```
+
+## See also
+* [GNU Parallel](https://www.gnu.org/software/parallel/)
