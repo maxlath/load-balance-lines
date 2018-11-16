@@ -26,11 +26,12 @@ process.stdin
 .on('close', closeChildren(children))
 .on('error', logAndExit)
 
-const killChildren = () => {
+const killChildren = signal => code => {
   children.forEach(child => child.kill())
+  if (signal === 'SIGINT' || typeof code !== 'number') code = 1
   // Exit the process itself as we overrided the default SIGINT behavior
-  process.exit(0)
+  process.exit(code)
 }
 
-process.on('exit', killChildren)
-process.on('SIGINT', killChildren)
+process.on('exit', killChildren('exit'))
+process.on('SIGINT', killChildren('SIGINT'))
