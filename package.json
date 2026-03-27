@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxlath/load-balance-lines"
+    "url": "https://codeberg.org/maxlath/load-balance-lines"
   },
   "keywords": [
     "load-balancing",
